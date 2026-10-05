@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frangos do Dudu - Frango Assado do Dudu</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            red: '#D9230F',
+                            darkred: '#990000',
+                            orange: '#F25C05',
+                            gold: '#F29F05',
+                            dark: '#1C1917',
+                            card: '#26221F',
+                            light: '#FAF8F5'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #12100E;
+            color: #FAF8F5;
+        }
+        .hero-bg {
+            background: linear-gradient(to right, rgba(18, 16, 14, 0.95), rgba(18, 16, 14, 0.75)), url('https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
+        }
+        .glow-gold {
+            box-shadow: 0 0 25px rgba(242, 159, 5, 0.35);
+        }
+        .glow-red {
+            box-shadow: 0 0 25px rgba(217, 35, 15, 0.4);
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-40 backdrop-blur-md bg-brand-dark/90 border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-brand-orange to-brand-red flex items-center justify-center text-white text-2xl font-black shadow-lg group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-drumstick-bite"></i>
+                </div>
+                <div>
+                    <span class="text-xl sm:text-2xl font-black tracking-tight text-white block leading-none">FRANGOS DO <span class="text-brand-gold">DUDU</span></span>
+                    <span class="text-xs text-brand-orange font-semibold tracking-wider uppercase">Crocante & Suculento</span>
+                </div>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center gap-8 font-semibold text-sm">
+                <a href="#inicio" class="text-gray-300 hover:text-brand-gold transition-colors">Início</a>
+                <a href="#cardapio" class="text-gray-300 hover:text-brand-gold transition-colors">Cardápio</a>
+                <a href="#sobre" class="text-gray-300 hover:text-brand-gold transition-colors">Sobre o Dudu</a>
+                <a href="#depoimentos" class="text-gray-300 hover:text-brand-gold transition-colors">Avaliações</a>
+                <a href="#contato" class="text-gray-300 hover:text-brand-gold transition-colors">Contato</a>
+            </nav>
+
+            <!-- Cart Trigger Button -->
+            <button onclick="toggleCartModal()" class="relative bg-gradient-to-r from-brand-red to-brand-orange text-white px-5 py-2.5 rounded-full font-bold flex items-center gap-2 hover:brightness-110 transition-all shadow-lg hover:shadow-brand-red/30">
+                <i class="fa-solid fa-basket-shopping text-lg"></i>
+                <span>Meu Pedido</span>
+                <span id="cart-count-badge" class="bg-brand-gold text-black text-xs font-extrabold w-5 h-5 rounded-full flex items-center justify-center ml-1 hidden">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="relative hero-bg py-20 sm:py-32 border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6 text-center lg:text-left">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-orange/20 border border-brand-orange/40 text-brand-gold text-sm font-semibold">
+                    <i class="fa-solid fa-fire text-brand-orange animate-pulse"></i> Frango assado quentinho aos domingos
+                </div>
+                <h1 class="text-4xl sm:text-6xl font-black text-white leading-tight">
+                    Frangos do Dudu <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold via-brand-orange to-brand-red">Frango Assado do Dudu</span>
+                </h1>
+                <p class="text-lg text-gray-300 max-w-xl mx-auto lg:mx-0">
+                    Frango assado quentinho para o seu almoço de domingo. Faça seu pedido pelo WhatsApp e retire no local.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
+                    <a href="#cardapio" class="bg-gradient-to-r from-brand-orange to-brand-red text-white font-extrabold px-8 py-4 rounded-xl text-lg flex items-center justify-center gap-3 hover:scale-105 transition-transform shadow-lg shadow-brand-red/30">
+                        <i class="fa-solid fa-utensils"></i> Ver Cardápio
+                    </a>
+                </div>
+
+                <!-- Info Badges -->
+                <div class="pt-6 grid grid-cols-3 gap-4 border-t border-white/10 text-center sm:text-left">
+                    <div>
+                        <span class="block text-brand-gold font-bold text-xl sm:text-2xl">Feito na hora</span>
+                        <span class="text-xs text-gray-400">Frango assado</span>
+                    </div>
+                    <div>
+                        <span class="block text-brand-gold font-bold text-xl sm:text-2xl">Domingo</span>
+                        <span class="text-xs text-gray-400">12h às 16h</span>
+                    </div>
+                    <div>
+                        <span class="block text-brand-gold font-bold text-xl sm:text-2xl">Retirada</span>
+                        <span class="text-xs text-gray-400">Somente no local</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Image Preview -->
+            <div class="relative flex justify-center">
+                <div class="relative w-full max-w-md aspect-square rounded-3xl overflow-hidden border-2 border-brand-gold/40 shadow-2xl glow-gold">
+                    <img src="https://s2-oglobo.glbimg.com/xRetvbsan7LTSbB-HUMwXG3e2m4%3D/1200x/smart/filters%3Acover%28%29%3Astrip_icc%28%29/i.s3.glbimg.com/v1/AUTH_da025474c0c44edd99332dddb09cabe8/internal_photos/bs/2023/W/k/RtASnXTmAoqlPpcBNbUQ/99026134-ri-rio-de-janeiro-rj-10-05-2022-indice-frangao-carioca-feito-pela-prefeitura-analisou-o.jpg" alt="Frangos inteiros assando na máquina rotativa" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
+                        <div>
+                            <span class="bg-brand-red text-white text-xs font-black uppercase px-3 py-1 rounded-full">Especial da Casa</span>
+                            <h3 class="text-xl font-bold text-white mt-2">Frango Assado Inteiro</h3>
+                            <p class="text-xs text-gray-300">R$ 39,90</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cardápio Section -->
+    <section id="cardapio" class="py-20 bg-brand-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-gold font-bold text-sm tracking-widest uppercase">Nosso Cardápio</span>
+                <h2 class="text-3xl sm:text-5xl font-black text-white mt-2">Escolha Suas Delícias</h2>
+                <p class="text-gray-400 mt-4">Preparados com carinho, ingredientes frescos e aquele tempero especial de família que você só encontra aqui!</p>
+            </div>
+
+            <!-- Filter Categories -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12">
+                <button onclick="filterMenu('todos')" class="menu-filter-btn active bg-brand-orange text-white px-6 py-2.5 rounded-full font-bold text-sm transition-all shadow-md">Todos</button>
+                <button onclick="filterMenu('frangos')" class="menu-filter-btn bg-brand-card hover:bg-brand-orange/80 text-gray-300 px-6 py-2.5 rounded-full font-bold text-sm transition-all">Frangos Assados</button>
+                <button onclick="filterMenu('acompanhamentos')" class="menu-filter-btn bg-brand-card hover:bg-brand-orange/80 text-gray-300 px-6 py-2.5 rounded-full font-bold text-sm transition-all">Acompanhamentos</button>
+            </div>
+
+            <!-- Menu Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="menu-grid">
+
+                <!-- Frango -->
+                <div class="menu-item category-frangos bg-brand-card rounded-2xl overflow-hidden border border-white/5 hover:border-brand-gold/50 transition-all duration-300 flex flex-col justify-between group shadow-lg">
+                  <div>
+                    <div class="relative h-52 overflow-hidden">
+                      <span class="absolute top-3 left-3 bg-brand-gold text-black font-extrabold text-xs px-3 py-1 rounded-full z-10 shadow-md">Mais pedido</span>
+                      <img src="https://s2-oglobo.glbimg.com/xRetvbsan7LTSbB-HUMwXG3e2m4%3D/1200x/smart/filters%3Acover%28%29%3Astrip_icc%28%29/i.s3.glbimg.com/v1/AUTH_da025474c0c44edd99332dddb09cabe8/internal_photos/bs/2023/W/k/RtASnXTmAoqlPpcBNbUQ/99026134-ri-rio-de-janeiro-rj-10-05-2022-indice-frangao-carioca-feito-pela-prefeitura-analisou-o.jpg" alt="Frango assado inteiro na rotisserie" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                      <div class="flex justify-between items-start gap-3 mb-2">
+                        <h3 class="text-xl font-bold text-white">Frango Assado Inteiro</h3>
+                        <span class="text-xl font-black text-brand-gold whitespace-nowrap">R$ 39,90</span>
+                      </div>
+                      <p class="text-gray-400 text-sm mb-4">Frango assado para o almoço de domingo.</p>
+                    </div>
+                  </div>
+                  <div class="p-6 pt-0"><button onclick="addToCart('Frango Assado Inteiro',39.90)" class="w-full bg-gradient-to-r from-brand-orange to-brand-red text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 hover:brightness-110 transition-all shadow-md"><i class="fa-solid fa-plus"></i> Adicionar</button></div>
+                </div>
+
+                <!-- Batata -->
+                <div class="menu-item category-acompanhamentos bg-brand-card rounded-2xl overflow-hidden border border-white/5 hover:border-brand-gold/50 transition-all duration-300 flex flex-col justify-between group shadow-lg">
+                  <div>
+                    <div class="relative h-52 overflow-hidden">
+                      <img src="https://content-images.weber.com/content/blog/hero-images/55e5ff66273cc_2015-09-week-1-labor-day-vrobel-drip-pan-potatoes-PHOTO-1.jpeg?auto=compress%2Cformat&w=750" alt="Batatas assadas na gordura do frango" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                      <div class="flex justify-between items-start gap-3 mb-2">
+                        <h3 class="text-xl font-bold text-white">Batata</h3>
+                        <span class="text-xl font-black text-brand-gold whitespace-nowrap">R$ 19,90</span>
+                      </div>
+                      <p class="text-gray-400 text-sm mb-4">Porção de batatas assadas na gordura do frango.</p>
+                    </div>
+                  </div>
+                  <div class="p-6 pt-0"><button onclick="addToCart('Batata',19.90)" class="w-full bg-gradient-to-r from-brand-orange to-brand-red text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 hover:brightness-110 transition-all shadow-md"><i class="fa-solid fa-plus"></i> Adicionar</button></div>
+                </div>
+
+                <!-- Farofa -->
+                <div class="menu-item category-acompanhamentos bg-brand-card rounded-2xl overflow-hidden border border-white/5 hover:border-brand-gold/50 transition-all duration-300 flex flex-col justify-between group shadow-lg">
+                  <div>
+                    <div class="relative h-52 overflow-hidden">
+                      <img src="https://snapcalorie-webflow-website.s3.us-east-2.amazonaws.com/media/recipe_pics_v2/medium/brazilian_farofa.jpg" alt="Farofa" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                      <div class="flex justify-between items-start gap-3 mb-2">
+                        <h3 class="text-xl font-bold text-white">Farofa</h3>
+                        <span class="text-xl font-black text-brand-gold whitespace-nowrap">R$ 14,90</span>
+                      </div>
+                      <p class="text-gray-400 text-sm mb-4">Acompanhamento perfeito para o frango assado.</p>
+                    </div>
+                  </div>
+                  <div class="p-6 pt-0"><button onclick="addToCart('Farofa',14.90)" class="w-full bg-gradient-to-r from-brand-orange to-brand-red text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 hover:brightness-110 transition-all shadow-md"><i class="fa-solid fa-plus"></i> Adicionar</button></div>
+                </div>
+
+                <!-- Vinagrete -->
+                <div class="menu-item category-acompanhamentos bg-brand-card rounded-2xl overflow-hidden border border-white/5 hover:border-brand-gold/50 transition-all duration-300 flex flex-col justify-between group shadow-lg">
+                  <div>
+                    <div class="relative h-52 overflow-hidden">
+                      <img src="https://cdn.shopify.com/s/files/1/0626/8374/2430/files/Gemini_Generated_Image_deuu2edeuu2edeuu.jpg?v=1746885364" alt="Vinagrete" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                      <div class="flex justify-between items-start gap-3 mb-2">
+                        <h3 class="text-xl font-bold text-white">Vinagrete</h3>
+                        <span class="text-xl font-black text-brand-gold whitespace-nowrap">R$ 16,90</span>
+                      </div>
+                      <p class="text-gray-400 text-sm mb-4">Acompanhamento fresco para completar seu almoço.</p>
+                    </div>
+                  </div>
+                  <div class="p-6 pt-0"><button onclick="addToCart('Vinagrete',16.90)" class="w-full bg-gradient-to-r from-brand-orange to-brand-red text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 hover:brightness-110 transition-all shadow-md"><i class="fa-solid fa-plus"></i> Adicionar</button></div>
+                </div>
+
+                <!-- Combo -->
+                <div class="menu-item category-frangos bg-gradient-to-br from-brand-card to-[#332a22] rounded-2xl overflow-hidden border-2 border-brand-gold/50 hover:border-brand-gold transition-all duration-300 flex flex-col justify-between group shadow-lg">
+                  <div>
+                    <div class="relative h-52 overflow-hidden">
+                      <span class="absolute top-3 left-3 bg-brand-red text-white font-extrabold text-xs px-3 py-1 rounded-full z-10 shadow-md">Combo do Dudu</span>
+                      <img src="https://s2-oglobo.glbimg.com/xRetvbsan7LTSbB-HUMwXG3e2m4%3D/1200x/smart/filters%3Acover%28%29%3Astrip_icc%28%29/i.s3.glbimg.com/v1/AUTH_da025474c0c44edd99332dddb09cabe8/internal_photos/bs/2023/W/k/RtASnXTmAoqlPpcBNbUQ/99026134-ri-rio-de-janeiro-rj-10-05-2022-indice-frangao-carioca-feito-pela-prefeitura-analisou-o.jpg" alt="Frango assado para o Combo do Dudu" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                      <div class="flex justify-between items-start gap-3 mb-2">
+                        <h3 class="text-xl font-bold text-white">Combo do Dudu</h3>
+                        <span class="text-xl font-black text-brand-gold whitespace-nowrap">R$ 69,90</span>
+                      </div>
+                      <p class="text-gray-400 text-sm mb-4">1 Frango + 1 Batata + 1 Farofa.</p>
+                    </div>
+                  </div>
+                  <div class="p-6 pt-0"><button onclick="addToCart('Combo do Dudu',69.90)" class="w-full bg-gradient-to-r from-brand-orange to-brand-red text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 hover:brightness-110 transition-all shadow-md"><i class="fa-solid fa-plus"></i> Adicionar</button></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="sobre" class="py-20 bg-gradient-to-b from-brand-dark to-black border-t border-b border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="relative">
+          <div class="rounded-3xl overflow-hidden border-2 border-brand-orange/40 shadow-2xl">
+            <img src="https://s2-oglobo.glbimg.com/xRetvbsan7LTSbB-HUMwXG3e2m4%3D/1200x/smart/filters%3Acover%28%29%3Astrip_icc%28%29/i.s3.glbimg.com/v1/AUTH_da025474c0c44edd99332dddb09cabe8/internal_photos/bs/2023/W/k/RtASnXTmAoqlPpcBNbUQ/99026134-ri-rio-de-janeiro-rj-10-05-2022-indice-frangao-carioca-feito-pela-prefeitura-analisou-o.jpg" alt="Frango assado" class="w-full h-auto">
+          </div>
+          <div class="absolute -bottom-6 -right-6 bg-brand-red border-2 border-brand-gold p-6 rounded-2xl shadow-2xl hidden sm:block">
+            <span class="block text-3xl font-black text-white">Domingo</span>
+            <span class="text-xs text-brand-gold uppercase font-bold tracking-widest">12h às 16h</span>
+          </div>
+        </div>
+        <div class="space-y-6">
+          <span class="text-brand-gold font-bold text-sm tracking-widest uppercase">Frangos do Dudu</span>
+          <h2 class="text-3xl sm:text-5xl font-black text-white">Seu almoço de domingo começa aqui.</h2>
+          <p class="text-gray-300 leading-relaxed">Frango assado e acompanhamentos para você retirar no local e levar para casa.</p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+            <div class="flex items-center gap-3 bg-brand-card p-4 rounded-xl border border-white/5">
+              <i class="fa-solid fa-fire-burner text-brand-orange text-2xl"></i>
+              <div><h4 class="font-bold text-white">Frango Assado</h4><p class="text-xs text-gray-400">R$ 39,90</p></div>
+            </div>
+            <div class="flex items-center gap-3 bg-brand-card p-4 rounded-xl border border-white/5">
+              <i class="fa-solid fa-basket-shopping text-brand-gold text-2xl"></i>
+              <div><h4 class="font-bold text-white">Combo do Dudu</h4><p class="text-xs text-gray-400">R$ 69,90</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer / Contato -->
+    <footer id="contato" class="bg-black text-gray-400 pt-16 pb-12 border-t border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-10 pb-12 border-b border-white/10">
+        <div class="space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-brand-orange to-brand-red flex items-center justify-center text-white text-xl font-black"><i class="fa-solid fa-drumstick-bite"></i></div>
+            <span class="text-xl font-black tracking-tight text-white">FRANGOS DO <span class="text-brand-gold">DUDU</span></span>
+          </div>
+          <p class="text-sm text-gray-400">Frango assado e acompanhamentos para o almoço de domingo.</p>
+        </div>
+        <div>
+          <h3 class="text-white font-bold text-lg mb-4 flex items-center gap-2"><i class="fa-regular fa-clock text-brand-gold"></i> Funcionamento</h3>
+          <p class="text-sm"><strong class="text-white">Domingo:</strong> 12h às 16h</p>
+          <p class="text-xs text-brand-gold mt-2">Somente retirada no local.</p>
+        </div>
+        <div>
+          <h3 class="text-white font-bold text-lg mb-4 flex items-center gap-2"><i class="fa-solid fa-location-dot text-brand-gold"></i> Onde estamos</h3>
+          <p class="text-sm flex items-start gap-3"><i class="fa-solid fa-map-pin text-brand-orange mt-1"></i><span>Av. Serrana - Jardim dos Reis<br>Franco da Rocha - SP<br>07845-000</span></p>
+          <p class="text-sm mt-4 text-gray-300"><i class="fa-solid fa-store text-brand-orange mr-2"></i>Retirada no local • Sem delivery</p>
+        </div>
+      </div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 text-center text-xs text-gray-500">
+        © 2026 Frangos do Dudu — Todos os direitos reservados.
+      </div>
+    </footer>
+
+    <!-- Cart / Order Modal Floating -->
+    <div id="cart-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex justify-end opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-brand-dark w-full max-w-md h-full flex flex-col justify-between border-l border-white/10 p-6 transform translate-x-full transition-transform duration-300" id="cart-drawer">
+            <!-- Modal Header -->
+            <div>
+                <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-basket-shopping text-2xl text-brand-gold"></i>
+                        <h3 class="text-xl font-bold text-white">Seu Pedido</h3>
+                    </div>
+                    <button onclick="toggleCartModal()" class="text-gray-400 hover:text-white text-2xl">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+
+                <!-- Items List -->
+                <div class="mb-4 bg-brand-gold/10 border border-brand-gold/30 rounded-xl px-4 py-3 text-sm text-gray-200">
+                  <i class="fa-solid fa-store text-brand-gold mr-2"></i>
+                  <strong class="text-white">Somente retirada no local</strong><br>
+                  <span class="text-gray-400">Av. Serrana - Jardim dos Reis, Franco da Rocha - SP • Domingo, 12h às 16h</span>
+                </div>
+                <div id="cart-items-container" class="space-y-4 max-h-[50vh] overflow-y-auto pr-2">
+                    <p class="text-gray-400 text-center py-8">Seu carrinho está vazio.<br>Escolha alguns assados apetitosos!</p>
+                </div>
+            </div>
+
+            <!-- Modal Footer & Checkout Form -->
+            <div class="border-t border-white/10 pt-6 space-y-4">
+                <div class="space-y-2">
+                    <div class="flex justify-between text-gray-300 text-sm">
+                        <span>Subtotal:</span>
+                        <span id="cart-subtotal" class="font-bold text-white">R$ 0,00</span>
+                    </div>
+                    <div class="flex justify-between text-xl font-black text-white pt-2 border-t border-white/5">
+                        <span>Total:</span>
+                        <span id="cart-total" class="text-brand-gold">R$ 0,00</span>
+                    </div>
+                </div>
+
+                <!-- Form Inputs -->
+                <div class="space-y-3">
+                    <input type="text" id="client-name" placeholder="Seu Nome Completo" class="w-full bg-brand-card border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-brand-gold">
+                    <select id="delivery-option" style="display:none" class="w-full bg-brand-card border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-gold">
+                        <option value="Retirada no Balcão">Opção: Retirada no Balcão do Dudu</option>
+                    </select>
+                </div>
+
+                <!-- Submit WhatsApp Button -->
+                <button onclick="sendOrderToWhatsApp()" class="w-full bg-green-600 hover:bg-green-500 text-white font-extrabold py-4 rounded-xl flex items-center justify-center gap-3 text-base shadow-lg shadow-green-600/30 transition-all">
+                    <i class="fa-brands fa-whatsapp text-2xl"></i> Enviar Pedido no WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // Shopping Cart State
+        let cart = [];
+
+        // Add item to cart
+        function addToCart(title, price) {
+            const existingItem = cart.find(item => item.title === title);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ title, price, quantity: 1 });
+            }
+            updateCartUI();
+            showToast(`"${title}" adicionado ao pedido!`);
+        }
+
+        // Change Item Quantity
+        function updateQuantity(title, change) {
+            const item = cart.find(i => i.title === title);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    cart = cart.filter(i => i.title !== title);
+                }
+            }
+            updateCartUI();
+        }
+
+        // Update Cart UI
+        function updateCartUI() {
+            const container = document.getElementById('cart-items-container');
+            const totalElement = document.getElementById('cart-total');
+            const subtotalElement = document.getElementById('cart-subtotal');
+            const badge = document.getElementById('cart-count-badge');
+
+            const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
+            
+            // Update Badge
+            if (totalItems > 0) {
+                badge.innerText = totalItems;
+                badge.classList.remove('hidden');
+            } else {
+                badge.classList.add('hidden');
+            }
+
+            // Render List
+            if (cart.length === 0) {
+                container.innerHTML = `<p class="text-gray-400 text-center py-8">Seu carrinho está vazio.<br>Escolha alguns assados apetitosos!</p>`;
+                totalElement.innerText = 'R$ 0,00';
+                subtotalElement.innerText = 'R$ 0,00';
+                return;
+            }
+
+            let html = '';
+            let total = 0;
+
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                html += `
+                    <div class="flex items-center justify-between bg-brand-card p-3 rounded-xl border border-white/5">
+                        <div class="flex-1 pr-2">
+                            <h4 class="font-bold text-white text-sm leading-tight">${item.title}</h4>
+                            <span class="text-brand-gold text-xs font-semibold">R$ ${item.price.toFixed(2).replace('.', ',')} un.</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button onclick="updateQuantity('${item.title}', -1)" class="w-7 h-7 rounded-lg bg-black/40 hover:bg-brand-red text-white flex items-center justify-center font-bold text-sm transition-colors">-</button>
+                            <span class="text-sm font-bold text-white w-5 text-center">${item.quantity}</span>
+                            <button onclick="updateQuantity('${item.title}', 1)" class="w-7 h-7 rounded-lg bg-black/40 hover:bg-brand-orange text-white flex items-center justify-center font-bold text-sm transition-colors">+</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+            const formattedTotal = `R$ ${total.toFixed(2).replace('.', ',')}`;
+            totalElement.innerText = formattedTotal;
+            subtotalElement.innerText = formattedTotal;
+        }
+
+        // Toggle Modal Visibility
+        function toggleCartModal() {
+            const modal = document.getElementById('cart-modal');
+            const drawer = document.getElementById('cart-drawer');
+
+            if (modal.classList.contains('opacity-0')) {
+                modal.classList.remove('opacity-0', 'pointer-events-none');
+                drawer.classList.remove('translate-x-full');
+            } else {
+                modal.classList.add('opacity-0', 'pointer-events-none');
+                drawer.classList.add('translate-x-full');
+            }
+        }
+
+        // Filter Menu Categories
+        function filterMenu(category) {
+            const buttons = document.querySelectorAll('.menu-filter-btn');
+            buttons.forEach(btn => btn.classList.remove('bg-brand-orange', 'text-white', 'active'));
+            event.target.classList.add('bg-brand-orange', 'text-white', 'active');
+
+            const items = document.querySelectorAll('.menu-item');
+            items.forEach(item => {
+                if (category === 'todos' || item.classList.contains(`category-${category}`)) {
+                    item.classList.remove('hidden');
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+        }
+
+        // WhatsApp Order Submission
+        function sendOrderToWhatsApp() {
+            if (cart.length === 0) {
+                alert('Seu carrinho está vazio! Adicione pelo menos um item antes de finalizar.');
+                return;
+            }
+
+            const name = document.getElementById('client-name').value.trim();
+            const option = 'Retirada no local';
+
+            if (!name) {
+                alert('Por favor, digite seu nome.');
+                return;
+            }
+
+            let message = `*NOVO PEDIDO - FRANGOS DO DUDU*\n\n`;
+            message += `*Cliente:* ${name}\n`;
+            message += `*Tipo:* ${option}\n`;
+            message += `\n*ITENS DO PEDIDO:*\n`;
+
+            let total = 0;
+            cart.forEach(item => {
+                const sub = item.price * item.quantity;
+                total += sub;
+                message += `• ${item.quantity}x ${item.title} - R$ ${sub.toFixed(2).replace('.', ',')}\n`;
+            });
+
+            message += `\n*TOTAL: R$ ${total.toFixed(2).replace('.', ',')}*\n\n📍 *Retirada no local:* Av. Serrana - Jardim dos Reis, Franco da Rocha - SP, 07845-000\n🕛 *Horário:* Domingo, 12h às 16h\n\n`;
+
+            const encoded = encodeURIComponent(message);
+            const whatsappNum = '5511976682207';
+
+            const whatsappUrl = `https://wa.me/${whatsappNum}?text=${encoded}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Simple Toast Notification
+        function showToast(text) {
+            const toast = document.createElement('div');
+            toast.className = 'fixed bottom-5 right-5 bg-brand-orange text-white text-sm font-bold px-5 py-3 rounded-xl shadow-2xl z-50 flex items-center gap-2 transform translate-y-10 opacity-0 transition-all duration-300';
+            toast.innerHTML = `<i class="fa-solid fa-circle-check"></i> ${text}`;
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-10', 'opacity-0');
+            }, 10);
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-10', 'opacity-0');
+                setTimeout(() => toast.remove(), 300);
+            }, 2500);
+        }
+    </script>
+</body>
+</html>
